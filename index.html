@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Café & Letras | Início</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Menu lateral -->
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="fa-solid fa-mug-hot"></i>
+          <i class="fa-solid fa-book-open"></i>
+        </div>
+
+        <h1>Café & Letras</h1>
+        <p>Livros que aproximam<br>pessoas</p>
+      </div>
+
+      <nav aria-label="Menu principal">
+        <a href="#inicio" class="nav-link active">
+          <i class="fa-solid fa-house"></i>
+          <span>Início</span>
+        </a>
+
+        <a href="#acervo" class="nav-link">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Acervo</span>
+        </a>
+
+        <a href="#leitores" class="nav-link">
+          <i class="fa-solid fa-users"></i>
+          <span>Leitores</span>
+        </a>
+
+        <a href="#emprestimos" class="nav-link">
+          <i class="fa-solid fa-arrows-rotate"></i>
+          <span>Empréstimos</span>
+        </a>
+
+        <a href="#relatorios" class="nav-link">
+          <i class="fa-solid fa-chart-column"></i>
+          <span>Relatórios</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="#sair" class="nav-link">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Sair</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Conteúdo -->
+    <main class="main" id="inicio">
+
+      <header class="topbar">
+        <div class="user">
+          <i class="fa-solid fa-user"></i>
+          <span>Atendente</span>
+          <i class="fa-solid fa-chevron-down arrow"></i>
+        </div>
+      </header>
+
+      <div class="content">
+
+        <section class="welcome">
+          <div class="welcome-text">
+            <h2>Bem-vindo ao Café & Letras!</h2>
+            <p>
+              Gerencie o acervo, registre empréstimos e
+              devoluções e incentive a leitura em nossa
+              comunidade.
+            </p>
+          </div>
+
+          <div class="welcome-illustration" aria-hidden="true">
+            <div class="book-stack">
+              <span class="book book-blue"></span>
+              <span class="book book-green"></span>
+              <span class="book book-red"></span>
+            </div>
+            <i class="fa-solid fa-mug-hot"></i>
+          </div>
+        </section>
+
+        <section class="cards" aria-label="Funcionalidades">
+
+          <article class="card card-acervo" id="acervo">
+            <i class="fa-solid fa-book-open card-icon"></i>
+            <h3>Acervo</h3>
+            <p>Consulte e cadastre livros do nosso acervo.</p>
+            <a href="#acervo" class="card-button">
+              Acessar <i class="fa-solid fa-chevron-right"></i>
+            </a>
+          </article>
+
+          <article class="card card-leitores" id="leitores">
+            <i class="fa-solid fa-users card-icon"></i>
+            <h3>Leitores</h3>
+            <p>Cadastre e gerencie os leitores.</p>
+            <a href="#leitores" class="card-button">
+              Acessar <i class="fa-solid fa-chevron-right"></i>
+            </a>
+          </article>
+
+          <article class="card card-emprestimos" id="emprestimos">
+            <i class="fa-solid fa-arrows-rotate card-icon"></i>
+            <h3>Empréstimos</h3>
+            <p>Registre empréstimos e devoluções.</p>
+            <a href="#emprestimos" class="card-button">
+              Acessar <i class="fa-solid fa-chevron-right"></i>
+            </a>
+          </article>
+
+          <article class="card card-relatorios" id="relatorios">
+            <i class="fa-solid fa-chart-column card-icon"></i>
+            <h3>Relatórios</h3>
+            <p>Acompanhe o uso do acervo.</p>
+            <a href="#relatorios" class="card-button">
+              Acessar <i class="fa-solid fa-chevron-right"></i>
+            </a>
+          </article>
+
+        </section>
+
+        <section class="mission">
+          <div class="mission-icon">
+            <i class="fa-solid fa-book-open"></i>
+          </div>
+
+          <div class="mission-text">
+            <h3>Nossa missão</h3>
+            <p>
+              Tornar o acesso aos livros mais simples e
+              contribuir para uma comunidade mais leitora
+              e conectada.
+            </p>
+          </div>
+
+          <blockquote>
+            “Um bom livro sempre<br>
+            acompanha um bom café.”
+          </blockquote>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>

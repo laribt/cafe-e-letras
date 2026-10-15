@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Café & Letras - Empréstimos</title>
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #faf8f5;
+      color: #30251e;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* MENU LATERAL */
+
+    .sidebar {
+      width: 245px;
+      background: #39271d;
+      color: white;
+      padding: 25px 15px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo {
+      text-align: center;
+      padding: 15px 0 35px;
+    }
+
+    .logo i {
+      font-size: 48px;
+      color: #e9cba0;
+    }
+
+    .logo h1 {
+      font-family: Georgia, serif;
+      font-size: 29px;
+      margin: 12px 0 5px;
+    }
+
+    .logo p {
+      color: #e0d1c4;
+      font-size: 13px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .menu a {
+      color: #e9e2dc;
+      text-decoration: none;
+      padding: 17px;
+      border-radius: 8px;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-height: 48px;
+    }
+
+    .menu a i {
+      width: 25px;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      background: #755639;
+      color: white;
+    }
+
+    .sair {
+      margin-top: auto;
+      border-top: 1px solid #776050;
+      padding-top: 15px;
+    }
+
+    /* CONTEÚDO */
+
+    .main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .topbar {
+      background: #f0ebe5;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 40px;
+      font-size: 18px;
+    }
+
+    .topbar i {
+      margin-right: 10px;
+    }
+
+    .content {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 35px;
+    }
+
+    .breadcrumb {
+      color: #786b61;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      font-family: Georgia, serif;
+      font-size: 38px;
+      margin: 0 0 12px;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      color: #625b56;
+      margin-bottom: 30px;
+    }
+
+    /* CARTÕES */
+
+    .panel {
+      background: white;
+      border: 1px solid #e8dfd7;
+      border-radius: 13px;
+      padding: 27px;
+      margin-bottom: 22px;
+      box-shadow: 0 3px 12px #00000008;
+    }
+
+    .panel h2 {
+      font-size: 21px;
+      margin: 0 0 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .panel h2 i {
+      color: #795338;
+    }
+
+    label {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 9px;
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      border: 1px solid #bdb5ad;
+      border-radius: 7px;
+      font-size: 16px;
+      background: white;
+      color: #30251e;
+    }
+
+    input:focus-visible,
+    select:focus-visible,
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #e5a63b;
+      outline-offset: 3px;
+    }
+
+    .hint {
+      font-size: 13px;
+      color: #625b56;
+      margin-top: 9px;
+    }
+
+    .book-result {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #f8f3ed;
+      padding: 18px;
+      border-radius: 9px;
+      margin-top: 20px;
+      border: 1px solid #e6d7c9;
+    }
+
+    .book-cover {
+      width: 75px;
+      height: 105px;
+      background: #67412d;
+      border-radius: 4px 9px 9px 4px;
+      display: grid;
+      place-items: center;
+      color: #f8e7cc;
+      font-size: 30px;
+      flex-shrink: 0;
+    }
+
+    .book-details {
+      flex: 1;
+    }
+
+    .book-details h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .book-details p {
+      margin: 5px 0;
+      color: #5f5751;
+    }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #215b39;
+      background: #e4f2e7;
+      border: 1px solid #b5d7bd;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .notice {
+      background: #fff6e5;
+      border-left: 4px solid #b07827;
+      padding: 15px 18px;
+      border-radius: 5px;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    .notice i {
+      color: #8a5816;
+      margin-right: 8px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    button,
+    .btn {
+      border: 0;
+      border-radius: 7px;
+      min-height: 48px;
+      padding: 12px 23px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-back {
+      background: #eae5df;
+      color: #38271c;
+    }
+
+    .btn-confirm {
+      background: #376849;
+      color: white;
+    }
+
+    .btn-confirm:hover {
+      background: #285239;
+    }
+
+    .message {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 8px;
+      display: none;
+      line-height: 1.5;
+    }
+
+    .message.success {
+      display: block;
+      background: #e4f2e7;
+      border: 1px solid #9cc8a6;
+      color: #215b39;
+    }
+
+    .message.error {
+      display: block;
+      background: #fff0ed;
+      border: 1px solid #d99b91;
+      color: #8b2d20;
+    }
+
+    /* CELULARES */
+
+    @media (max-width: 850px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .logo {
+        padding: 5px 0 15px;
+      }
+
+      .menu {
+        flex-direction: row;
+        overflow-x: auto;
+      }
+
+      .menu a {
+        white-space: nowrap;
+        padding: 12px;
+      }
+
+      .sair {
+        display: none;
+      }
+
+      .topbar {
+        height: 55px;
+        padding: 0 20px;
+      }
+
+      .content {
+        padding: 22px 16px;
+      }
+
+      .page-title {
+        font-size: 29px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .book-result {
+        flex-wrap: wrap;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .actions .btn,
+      .actions button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- MENU LATERAL -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="fa-solid fa-mug-hot" aria-hidden="true"></i>
+      <h1>Café & Letras</h1>
+      <p>Livros que aproximam pessoas</p>
+    </div>
+
+    <nav class="menu" aria-label="Menu principal">
+      <a href="index.html">
+        <i class="fa-solid fa-house" aria-hidden="true"></i>
+        Início
+      </a>
+
+      <a href="index.html#acervo">
+        <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+        Acervo
+      </a>
+
+      <a href="index.html#leitores">
+        <i class="fa-solid fa-users" aria-hidden="true"></i>
+        Leitores
+      </a>
+
+      <a href="emprestimos.html" class="active" aria-current="page">
+        <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+        Empréstimos
+      </a>
+    </nav>
+
+    <div class="sair">
+      <a href="index.html" class="btn-back btn">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        Voltar ao início
+      </a>
+    </div>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="main">
+
+    <header class="topbar">
+      <i class="fa-solid fa-user" aria-hidden="true"></i>
+      Atendente
+    </header>
+
+    <div class="content">
+
+      <div class="breadcrumb">
+        Início / Empréstimos / Novo empréstimo
+      </div>
+
+      <h1 class="page-title">Registrar empréstimo</h1>
+
+      <p class="subtitle">
+        Consulte a disponibilidade de um livro,
+        selecione o leitor e confirme a retirada.
+      </p>
+
+      <form id="loanForm">
+
+        <!-- LIVRO -->
+        <section class="panel">
+          <h2>
+            <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+            1. Selecione o livro
+          </h2>
+
+          <label for="livro">Pesquisar livro</label>
+
+          <select id="livro" name="livro" required>
+            <option value="">Selecione um livro</option>
+            <option value="dom" selected>Dom Casmurro — Machado de Assis</option>
+            <option value="capitaes">Capitães da Areia — Jorge Amado</option>
+            <option value="quarto">Quarto de Despejo — Carolina Maria de Jesus</option>
+          </select>
+
+          <p class="hint">
+            Escolha um título cadastrado no acervo.
+          </p>
+
+          <div class="book-result">
+            <div class="book-cover" aria-hidden="true">
+              <i class="fa-solid fa-book"></i>
+            </div>
+
+            <div class="book-details">
+              <h3 id="bookTitle">Dom Casmurro</h3>
+              <p id="bookAuthor">Machado de Assis</p>
+              <p>Gênero: Literatura brasileira</p>
+            </div>
+
+            <div class="availability" id="availability">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              2 exemplares disponíveis
+            </div>
+          </div>
+        </section>
+
+        <!-- LEITOR -->
+        <section class="panel">
+          <h2>
+            <i class="fa-solid fa-user-check" aria-hidden="true"></i>
+            2. Dados do empréstimo
+          </h2>
+
+          <div class="form-grid">
+            <div>
+              <label for="leitor">Leitor cadastrado</label>
+
+              <select id="leitor" name="leitor" required>
+                <option value="">Selecione o leitor</option>
+                <option value="ana" selected>Ana Souza</option>
+                <option value="carlos">Carlos Lima</option>
+                <option value="marina">Marina Costa</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="devolucao">Data prevista de devolução</label>
+
+              <input
+                type="date"
+                id="devolucao"
+                name="devolucao"
+                value="2026-11-30"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="notice">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            Confira os dados antes de confirmar.
+            O sistema deverá atualizar a disponibilidade
+            do livro após o registro do empréstimo.
+          </div>
+
+          <div class="actions">
+            <a href="index.html" class="btn btn-back">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              Voltar
+            </a>
+
+            <button type="submit" class="btn-confirm">
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Confirmar empréstimo
+            </button>
+          </div>
+
+          <div
+            id="message"
+            class="message"
+            role="status"
+            aria-live="polite">
+          </div>
+        </section>
+
+      </form>
+    </div>
+  </main>
+</div>
+
+<script>
+  // Dados exclusivamente fictícios para o protótipo.
+  const livros = {
+    dom: {
+      titulo: "Dom Casmurro",
+      autor: "Machado de Assis",
+      disponiveis: 2
+    },
+    capitaes: {
+      titulo: "Capitães da Areia",
+      autor: "Jorge Amado",
+      disponiveis: 1
+    },
+    quarto: {
+      titulo: "Quarto de Despejo",
+      autor: "Carolina Maria de Jesus",
+      disponiveis: 0
+    }
+  };
+
+  const livroSelect = document.getElementById("livro");
+  const leitorSelect = document.getElementById("leitor");
+  const devolucao = document.getElementById("devolucao");
+  const message = document.getElementById("message");
+
+  function atualizarLivro() {
+    const livro = livros[livroSelect.value];
+
+    if (!livro) {
+      document.getElementById("bookTitle").textContent =
+        "Nenhum livro selecionado";
+
+      document.getElementById("bookAuthor").textContent = "";
+
+      document.getElementById("availability").textContent =
+        "Selecione um livro";
+
+      return;
+    }
+
+    document.getElementById("bookTitle").textContent =
+      livro.titulo;
+
+    document.getElementById("bookAuthor").textContent =
+      livro.autor;
+
+    document.getElementById("availability").textContent =
+      livro.disponiveis + " exemplares disponíveis";
+  }
+
+  livroSelect.addEventListener("change", atualizarLivro);
+
+  document.getElementById("loanForm").addEventListener(
+    "submit",
+    function(event) {
+      event.preventDefault();
+
+      const livro = livros[livroSelect.value];
+
+      message.className = "message";
+      message.textContent = "";
+
+      if (!livro || !leitorSelect.value || !devolucao.value) {
+        message.classList.add("error");
+        message.textContent =
+          "Preencha todos os campos obrigatórios.";
+        return;
+      }
+
+      if (livro.disponiveis <= 0) {
+        message.classList.add("error");
+        message.textContent =
+          "Livro indisponível para empréstimo.";
+        return;
+      }
+
+      // Simulação local: não grava em banco de dados.
+      livro.disponiveis -= 1;
+
+      atualizarLivro();
+
+      const destino = new URL("resultado.html", window.location.href);
+
+destino.searchParams.set("livro", livroSelect.value);
+destino.searchParams.set("leitor", leitorSelect.value);
+destino.searchParams.set("data", devolucao.value);
+
+window.location.href = destino.href;
+
+      message.classList.add("success");
+      message.textContent =
+        "Empréstimo simulado com sucesso! " +
+        "Livro: " + livro.titulo +
+        ". Data prevista: " +
+        devolucao.value.split("-").reverse().join("/") +
+        ". Disponíveis agora: " +
+        livro.disponiveis + ".";
+    }
+  );
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Ambiente virtual
+.venv/
+venv/
+env/
+
+# Variáveis e segredos
+.env
+.env.*
+!.env.example
+
+# Banco local
+db.sqlite3
+
+# Arquivos temporários
+*.log
+*.tmp
+
+# VS Code
+.vscode/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Testes
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Arquivos enviados por usuários
+media/

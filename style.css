@@ -1,0 +1,452 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --brown: #382519;
+  --brown-light: #745338;
+  --cream: #fffdfa;
+  --text: #231812;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", Arial, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Menu lateral */
+
+.sidebar {
+  width: 245px;
+  min-width: 245px;
+  background: linear-gradient(160deg, #352217, #463023);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 12px;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.logo-icon {
+  height: 105px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #f1d7b4;
+}
+
+.logo-icon .fa-mug-hot {
+  font-size: 52px;
+}
+
+.logo-icon .fa-book-open {
+  font-size: 48px;
+  margin-top: -7px;
+}
+
+.logo h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.logo p {
+  font-size: 14px;
+  color: #e5d4c4;
+  margin-top: 5px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  color: #e4dbd3;
+  text-decoration: none;
+  font-size: 19px;
+  padding: 19px 20px;
+  border-radius: 9px;
+  transition: background .2s;
+}
+
+.nav-link i {
+  width: 30px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: #755638;
+  color: #fff;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  border-top: 1px solid #806a59;
+  padding-top: 18px;
+}
+
+/* Área principal */
+
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+.topbar {
+  height: 70px;
+  background: #f5f0eb;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 40px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 20px;
+}
+
+.user .fa-user {
+  font-size: 25px;
+}
+
+.user .arrow {
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+.content {
+  padding: 40px;
+  max-width: 1550px;
+  margin: 0 auto;
+}
+
+/* Boas-vindas */
+
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.welcome-text {
+  max-width: 770px;
+}
+
+.welcome h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(32px, 3.4vw, 54px);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.welcome p {
+  font-family: Georgia, serif;
+  font-size: clamp(18px, 2vw, 28px);
+  line-height: 1.5;
+  color: #555b60;
+}
+
+.welcome-illustration {
+  width: 350px;
+  height: 210px;
+  min-width: 250px;
+  border-radius: 50%;
+  background: #f8e6d1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-illustration > i {
+  font-size: 115px;
+  color: #a7794e;
+  position: absolute;
+  right: 22px;
+  bottom: 18px;
+}
+
+.book-stack {
+  position: absolute;
+  left: 30px;
+  bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transform: rotate(-5deg);
+}
+
+.book {
+  width: 130px;
+  height: 27px;
+  border-radius: 6px;
+  border-right: 18px solid #f3e5cd;
+  box-shadow: 3px 4px 0 #c8a98b;
+}
+
+.book-blue { background: #225e87; }
+.book-green { background: #3b7852; }
+.book-red { background: #b7462e; }
+
+/* Cartões */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.card {
+  min-height: 370px;
+  border-radius: 12px;
+  padding: 35px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card-acervo {
+  background: #f9efeb;
+  --card-color: #663725;
+}
+
+.card-leitores {
+  background: #eff3e9;
+  --card-color: #326540;
+}
+
+.card-emprestimos {
+  background: #eaf3fa;
+  --card-color: #285e90;
+}
+
+.card-relatorios {
+  background: #f1eef9;
+  --card-color: #51408c;
+}
+
+.card-icon {
+  font-size: 72px;
+  color: var(--card-color);
+  margin: 8px 0 25px;
+}
+
+.card h3 {
+  font-size: 27px;
+  margin-bottom: 14px;
+}
+
+.card p {
+  color: #525b60;
+  font-size: 18px;
+  line-height: 1.5;
+  min-height: 82px;
+}
+
+.card-button {
+  margin-top: auto;
+  width: 100%;
+  min-height: 58px;
+  background: var(--card-color);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card-button:hover {
+  filter: brightness(1.15);
+}
+
+a:focus-visible {
+  outline: 3px solid #e8a634;
+  outline-offset: 4px;
+}
+
+/* Missão */
+
+.mission {
+  margin-top: 38px;
+  background: #fcf3df;
+  border-radius: 12px;
+  padding: 35px 28px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.mission-icon {
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #ae791e;
+  color: white;
+  font-size: 35px;
+}
+
+.mission-text {
+  flex: 1;
+}
+
+.mission-text h3 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.mission-text p {
+  font-size: 17px;
+  line-height: 1.5;
+  color: #5a6266;
+}
+
+.mission blockquote {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-style: italic;
+  line-height: 1.6;
+  text-align: center;
+  color: #384047;
+}
+
+/* Responsividade */
+
+@media (max-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .welcome-illustration {
+    width: 250px;
+  }
+
+  .mission blockquote {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+    padding: 15px;
+  }
+
+  .logo {
+    margin-bottom: 15px;
+  }
+
+  .logo-icon {
+    height: 60px;
+  }
+
+  .logo-icon .fa-mug-hot {
+    font-size: 30px;
+  }
+
+  .logo-icon .fa-book-open {
+    font-size: 27px;
+  }
+
+  .logo h1 {
+    font-size: 23px;
+  }
+
+  .sidebar nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    padding: 12px;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .nav-link i {
+    font-size: 18px;
+    width: auto;
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .topbar {
+    height: 55px;
+    padding: 0 20px;
+  }
+
+  .content {
+    padding: 22px 16px;
+  }
+
+  .welcome-illustration {
+    display: none;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card {
+    min-height: 290px;
+  }
+
+  .card-icon {
+    font-size: 55px;
+    margin-bottom: 18px;
+  }
+
+  .card p {
+    min-height: auto;
+    margin-bottom: 25px;
+  }
+
+  .mission {
+    padding: 22px;
+  }
+}
