@@ -80,3 +80,16 @@ Observação: nesta versão do protótipo, as operações
 são simuladas em JavaScript e não são persistidas
 em um banco de dados.
 
+
+## Validação do protótipo
+
+O protótipo Café & Letras possui três telas principais:
+
+1. Tela inicial: acesso às funcionalidades do sistema.
+2. Empréstimos: seleção do livro, leitor e data de devolução.
+3. Resultado: confirmação do empréstimo e consulta dos dados.
+
+Nesta etapa, as operações são simuladas em JavaScript.
+A implementação com Django e banco de dados será
+desenvolvida posteriormente.
+
