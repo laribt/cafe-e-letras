@@ -64,3 +64,19 @@ ODS 4 — Educação de Qualidade.
 
 O projeto busca contribuir indiretamente para
 a organização do acesso aos livros na comunidade.
+
+
+## Fluxo de empréstimo
+
+1. Acesse a tela inicial do Café & Letras.
+2. Clique na opção Empréstimos.
+3. Selecione um livro disponível.
+4. Selecione um leitor cadastrado.
+5. Informe a data prevista de devolução.
+6. Confirme o empréstimo.
+7. Confira os dados na tela de resultado.
+
+Observação: nesta versão do protótipo, as operações
+são simuladas em JavaScript e não são persistidas
+em um banco de dados.
+
