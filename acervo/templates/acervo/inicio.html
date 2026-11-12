@@ -1,0 +1,46 @@
+
+{% extends "acervo/base.html" %}
+
+{% block conteudo %}
+<h1>Café & Letras</h1>
+
+<p>
+    Sistema de gerenciamento de livros,
+    leitores, empréstimos e devoluções.
+</p>
+
+<div class="row g-3 mt-3">
+    <div class="col-md-4">
+        <div class="card p-4 h-100">
+            <h2 class="h5">Acervo</h2>
+            <p>Consulte e cadastre livros.</p>
+            <a class="btn btn-dark"
+               href="{% url 'lista_livros' %}">
+                Acessar livros
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-4 h-100">
+            <h2 class="h5">Leitores</h2>
+            <p>Cadastre os leitores da comunidade.</p>
+            <a class="btn btn-dark"
+               href="{% url 'lista_leitores' %}">
+                Acessar leitores
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-4 h-100">
+            <h2 class="h5">Empréstimos</h2>
+            <p>Registre empréstimos e devoluções.</p>
+            <a class="btn btn-dark"
+               href="{% url 'lista_emprestimos' %}">
+                Acessar empréstimos
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

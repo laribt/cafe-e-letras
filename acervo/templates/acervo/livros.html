@@ -1,0 +1,66 @@
+
+{% extends "acervo/base.html" %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-between flex-wrap gap-2">
+    <h1>Acervo de livros</h1>
+
+    <a class="btn btn-success"
+       href="{% url 'cadastrar_livro' %}">
+        Cadastrar livro
+    </a>
+</div>
+
+<form method="get" class="my-3">
+    <label for="busca" class="form-label">
+        Buscar por título ou autor
+    </label>
+
+    <div class="d-flex gap-2">
+        <input
+            type="search"
+            name="busca"
+            id="busca"
+            class="form-control"
+            value="{{ busca }}"
+        >
+
+        <button class="btn btn-dark" type="submit">
+            Buscar
+        </button>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Gênero</th>
+                <th scope="col">Disponíveis</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for livro in livros %}
+                <tr>
+                    <td>{{ livro.titulo }}</td>
+                    <td>{{ livro.autor }}</td>
+                    <td>{{ livro.genero }}</td>
+                    <td>
+                        {{ livro.quantidade_disponivel }}
+                        de {{ livro.quantidade_total }}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">
+                        Nenhum livro encontrado.
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+
+{% extends "acervo/base.html" %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-between flex-wrap gap-2">
+    <h1>Empréstimos</h1>
+
+    <a class="btn btn-success"
+       href="{% url 'novo_emprestimo' %}">
+        Novo empréstimo
+    </a>
+</div>
+
+<div class="table-responsive mt-3">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Livro</th>
+                <th scope="col">Leitor</th>
+                <th scope="col">Data prevista</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ação</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for emprestimo in emprestimos %}
+                <tr>
+                    <td>{{ emprestimo.livro.titulo }}</td>
+                    <td>{{ emprestimo.leitor.nome }}</td>
+                    <td>
+                        {{ emprestimo.data_prevista|date:"d/m/Y" }}
+                    </td>
+                    <td>{{ emprestimo.get_status_display }}</td>
+                    <td>
+                        {% if emprestimo.status == "aberto" %}
+                            <form method="post"
+                                  action="{% url 'devolver_livro' emprestimo.pk %}">
+                                {% csrf_token %}
+
+                                <button type="submit"
+                                        class="btn btn-outline-dark">
+                                    Registrar devolução
+                                </button>
+                            </form>
+                        {% else %}
+                            Devolvido
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">
+                        Nenhum empréstimo registrado.
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

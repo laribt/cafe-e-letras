@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>Café & Letras</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            background: #f8f4ee;
+            color: #30251f;
+        }
+
+        .navbar {
+            background: #503526;
+        }
+
+        .navbar a {
+            color: #ffffff;
+        }
+
+        .navbar a:hover {
+            color: #f3d8aa;
+        }
+
+        .card {
+            border-radius: 12px;
+        }
+
+        .btn {
+            min-height: 44px;
+        }
+
+        input, select {
+            max-width: 100%;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 3px solid #1769aa;
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio' %}">
+                Café & Letras
+            </a>
+
+            <div class="d-flex flex-wrap gap-3">
+                <a href="{% url 'lista_livros' %}">Acervo</a>
+                <a href="{% url 'lista_leitores' %}">Leitores</a>
+                <a href="{% url 'lista_emprestimos' %}">
+                    Empréstimos
+                </a>
+                <a href="/admin/logout/">Sair</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+        {% if messages %}
+            <div aria-live="polite">
+                {% for message in messages %}
+                    <div class="alert alert-info" role="status">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block conteudo %}
+        {% endblock %}
+    </main>
+</body>
+</html>
