@@ -35,3 +35,12 @@ htmlcov/
 
 # Arquivos enviados por usuários
 media/
+
+# Segundo ambiente virtual
+.venv-1/
+
+# Arquivos estáticos gerados pelo Django
+staticfiles/
+
+# Arquivo temporário do SQLite
+db.sqlite3-journal
